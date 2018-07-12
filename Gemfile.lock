@@ -48,6 +48,8 @@ GEM
       dry-types (~> 0.13.1)
     envlogic (1.1.0)
       dry-inflector (~> 0.1)
+    fast_jsonapi (1.2)
+      activesupport (>= 4.2)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     karafka (1.2.4)
@@ -86,7 +88,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  fast_jsonapi
   karafka
+
+RUBY VERSION
+   ruby 2.5.1p57
 
 BUNDLED WITH
    1.16.2

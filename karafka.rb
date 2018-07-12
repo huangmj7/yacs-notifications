@@ -7,6 +7,7 @@ require 'bundler/setup'
 Bundler.require(:default, ENV['KARAFKA_ENV'])
 Karafka::Loader.load(Karafka::App.root)
 require_relative 'app/consumers/sections_consumer.rb'
+require_relative 'app/consumers/courses_consumer.rb'
 
 # Ruby on Rails setup
 # Remove whole non-Rails setup that is above and uncomment the 4 lines below
@@ -37,7 +38,10 @@ class KarafkaApp < Karafka::App
       topic :section_change do
         consumer SectionConsumer #Single message from section_change
         end
+      topic:course_change do 
+        consumer CourseConsumer #Single message from course_change
+        end
       end
-    end
+  end
 end
 KarafkaApp.boot!
