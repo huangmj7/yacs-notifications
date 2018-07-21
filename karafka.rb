@@ -9,6 +9,7 @@ Karafka::Loader.load(Karafka::App.root)
 require_relative 'app/consumers/sections_consumer.rb'
 require_relative 'app/consumers/courses_consumer.rb'
 
+
 # Ruby on Rails setup
 # Remove whole non-Rails setup that is above and uncomment the 4 lines below
 # ENV['RAILS_ENV'] ||= 'development'
@@ -16,7 +17,6 @@ require_relative 'app/consumers/courses_consumer.rb'
 # require ::File.expand_path('../config/environment', __FILE__)
 # Rails.application.eager_load!
 require 'karafka'
-
 class KarafkaApp < Karafka::App
   setup do |config|
     config.kafka.seed_brokers = %w(kafka://kafka:9094)
@@ -29,7 +29,8 @@ class KarafkaApp < Karafka::App
   end
  
 
-  after_init do |config|
+  after_init do |config| #build the server ping-pong until client end start sending message
+  
   end
 
   Karafka.monitor.subscribe(Karafka::Instrumentation::Listener)
@@ -44,4 +45,25 @@ class KarafkaApp < Karafka::App
       end
   end
 end
+
 KarafkaApp.boot!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

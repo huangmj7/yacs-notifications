@@ -52,6 +52,8 @@ GEM
       activesupport (>= 4.2)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    iodine (0.6.5)
+      rack (>= 1.0, < 3.0)
     karafka (1.2.4)
       activesupport (>= 4.0)
       dry-configurable (~> 0.7)
@@ -69,6 +71,11 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     null-logger (0.1.5)
+    plezi (0.16.0)
+      bundler (~> 1.14)
+      iodine (>= 0.6.0, < 0.7.0)
+      rack (>= 2.0.0)
+    rack (2.0.5)
     rake (12.3.1)
     require_all (2.0.0)
     rouge (2.2.1)
@@ -90,6 +97,7 @@ PLATFORMS
 DEPENDENCIES
   fast_jsonapi
   karafka
+  plezi
 
 RUBY VERSION
    ruby 2.5.1p57
