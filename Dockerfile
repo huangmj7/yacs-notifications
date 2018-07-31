@@ -14,6 +14,5 @@ COPY . $INSTALL_PATH
 
 
 #ENV ENTRY bundle exec iodine -p 3000 -t 1 -w 1 -www ./public && bundle exec karafka server
-#CMD $ENTRY
-
-CMD bundle exec iodine -p 3000 -t 1 -w 1 -www ./public 
+ENV ENTRY ruby notifications.rb && bundle exec karafka server
+CMD $ENTRY
