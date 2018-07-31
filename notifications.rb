@@ -15,6 +15,8 @@ Dir[File.join '{controllers}', '**', '*.rb'].each { |file| load File.expand_path
 # Load all the code from a subfolder called 'lib'
 Dir[File.join '{lib}', '**', '*.rb'].each { |file| load File.expand_path(file) }
 ## Logging
+# require 'iodine'
+
 Iodine::DEFAULT_HTTP_ARGS[:log] = 1 if Iodine::DEFAULT_HTTP_ARGS[:log].nil?
 
 # # Optional Scaling (across processes or machines):
@@ -29,5 +31,8 @@ ENV['PL_REDIS_URL'] ||= ENV['REDIS_URL'] ||
 # Map the views folder to the template root (for the {#render} function).
 #Plezi.templates = Root.join('views').to_s
 
-# load routes.
-load Root.join('routes.rb').to_s
+# Start Plezi
+require_relative 'routes.rb'
+
+# Start Karafka
+require_relative 'karafka.rb'

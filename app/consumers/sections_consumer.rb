@@ -1,5 +1,4 @@
 require 'karafka'
-require 'plezi'
 require 'iodine'
 require_relative 'application_consumer'
 

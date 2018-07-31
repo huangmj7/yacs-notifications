@@ -7,8 +7,6 @@ require 'bundler/setup'
 Bundler.require(:default, ENV['KARAFKA_ENV'])
 Karafka::Loader.load(Karafka::App.root)
 require_relative 'app/consumers/sections_consumer.rb'
-require_relative 'app/consumers/application_consumer.rb'
-
 
 # Ruby on Rails setup
 # Remove whole non-Rails setup that is above and uncomment the 4 lines below
@@ -17,11 +15,6 @@ require_relative 'app/consumers/application_consumer.rb'
 # require ::File.expand_path('../config/environment', __FILE__)
 # Rails.application.eager_load!
 require 'karafka'
-require 'plezi'
-require 'iodine'
-require_relative 'app/controllers/eventstream.rb'
-require_relative 'app.rb'
-
 
 class KarafkaApp < Karafka::App
   setup do |config|
@@ -51,8 +44,5 @@ class KarafkaApp < Karafka::App
       #end
     end
 end
-
-
-
 
 KarafkaApp.boot!
