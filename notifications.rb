@@ -11,7 +11,7 @@ Root ||= Pathname.new(File.dirname(__FILE__)).expand_path
 require 'bundler'
 Bundler.require(:default, ENV['ENV'].to_s.to_sym)
 # Load all the code from a subfolder called 'app'
-Dir[File.join '{controllers}', '**', '*.rb'].each { |file| load File.expand_path(file) }
+Dir[File.join '{app/controllers}', '**', '*.rb'].each { |file| load File.expand_path(file) }
 # Load all the code from a subfolder called 'lib'
 Dir[File.join '{lib}', '**', '*.rb'].each { |file| load File.expand_path(file) }
 ## Logging
