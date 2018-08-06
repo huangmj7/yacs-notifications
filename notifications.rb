@@ -20,6 +20,8 @@ Dir[File.join '{lib}', '**', '*.rb'].each { |file| load File.expand_path(file) }
 #Iodine::DEFAULT_HTTP_ARGS[:port] = 4860
 
 ## Logging
+# require 'iodine'
+
 Iodine::DEFAULT_HTTP_ARGS[:log] = 1 if Iodine::DEFAULT_HTTP_ARGS[:log].nil?
 
 # # Optional Scaling (across processes or machines):
@@ -34,18 +36,9 @@ ENV['PL_REDIS_URL'] ||= ENV['REDIS_URL'] ||
 # Map the views folder to the template root (for the {#render} function).
 #Plezi.templates = Root.join('views').to_s
 
-# load routes.
-load Root.join('routes.rb').to_s
-puts "BUG1"
 
-App = Proc.new do |env|
-       if(env['rack.upgrade?'.freeze] == :websocket)
-           env['rack.upgrade'.freeze] = EventStream.new
-           [0, {}, []]
-       else
-          [200, {"Content-Length" => "12", "Content-Type" => "text/plain"}, ["Hello World!"]]
-      end
-  
-end
-puts "BUG2"
+# Start Plezi
+require_relative 'routes.rb'
 
+# Start Karafka
+require_relative 'karafka.rb'

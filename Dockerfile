@@ -12,7 +12,4 @@ RUN bundle install
 
 COPY . $INSTALL_PATH
 
-
-ENV ENTRY bundle exec iodine -p 3000 -t 1 -w 1  &&  bundle exec karafka server 
-CMD $ENTRY
-
+CMD ruby notifications.rb
