@@ -20,7 +20,7 @@ require 'karafka'
 require 'plezi'
 require 'iodine'
 require_relative 'app/controllers/eventstream.rb'
-require_relative 'app.rb'
+
 
 
 class KarafkaApp < Karafka::App
