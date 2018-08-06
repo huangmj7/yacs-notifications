@@ -36,7 +36,10 @@ ENV['PL_REDIS_URL'] ||= ENV['REDIS_URL'] ||
 # Map the views folder to the template root (for the {#render} function).
 #Plezi.templates = Root.join('views').to_s
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3e679419c4a3072f794fa893c2c903334ba24107
 # Start Plezi
 require_relative 'routes.rb'
 
