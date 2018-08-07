@@ -2,32 +2,27 @@ require 'plezi'
 require 'iodine'
 
 
-# Replace this sample with real code.
 class EventStream
-  
+  #@auto_dispatch = true
   def index
-    # any String returned will be appended to the response. We return a String.CLIENT_AS_STRING
-    "CLIENT_AS_STRING"
-  end
-  
-  def on_open 
-    subscribe "notifications"
-    write "hello"
-    publish "notifications", "OPEN"
-    ::Iodine::subcribe channal:"notifications"do 
-      puts "hi"
+    render 'client'
+  end 
+
+  def on_open
+    puts "WS connection open"
+    ::Iodine::subscribe channel:"notifications" do
+      puts "I'm in!"
     end
   end
   
-  def on_message(data) #If no incoming information, send @event
-    # publish "notifications", data
-    puts data
-  end
-
-  def on_close 
-    publish "notifications", "CLOSE"
+  #TODO
+  def on_message data
+    #::Iodine::write "#{@data}"
+    #puts data
   end 
-  
-end
 
-#test location: ws://localhost:3000/notifications/
+
+  def on_close
+    ::Iodine::unsubscribe("notifications")
+  end 
+end

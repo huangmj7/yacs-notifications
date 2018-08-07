@@ -1,7 +1,8 @@
 # Default Rack interface
-
+# encoding: UTF-8
 # load the application
-load ::File.expand_path(File.join('..', 'notifications.rb'), __FILE__)
+load ::File.expand_path(File.join('..', 'app.rb'), __FILE__)
 
-Iodine::DEFAULT_HTTP_ARGS[:public] ||= './public'
 
+run App
+run Plezi.app

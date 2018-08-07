@@ -4,9 +4,10 @@ require_relative 'application_consumer'
 
 class SectionConsumer < ApplicationConsumer
   def consume
-    #EventStream.notify(params) 
-    #puts "Consumer message sent to websocket"	
-    puts params
-    #EventStream.run
+    unless params.nil?
+      @notifications = params.to_s
+      ::Iodine::publish channel: "notifications", message: "#{@notifications}"
+      puts "SectionsConsumer sent message to websocket"	
+    end
   end
 end

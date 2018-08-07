@@ -1,5 +1,4 @@
-#require 'plezi'
-#require_relative 'app/controllers/eventstream.rb'
 
-# ws://0.0.0.0/EventStream
-Plezi.route '/notifications', EventStream
+# ws://0.0.0.0/notifications
+Plezi.route '/', EventStream
+Plezi.route 'public/javascripts/client.js', :client

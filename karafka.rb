@@ -7,8 +7,9 @@ ENV['KARAFKA_ENV'] ||= ENV['RACK_ENV']
 require 'bundler/setup'
 Bundler.require(:default, ENV['KARAFKA_ENV'])
 Karafka::Loader.load(Karafka::App.root)
-require_relative 'app/consumers/sections_consumer.rb'
 
+require_relative 'app/consumers/sections_consumer'
+require_relative 'app/consumers/courses_consumer'
 # Ruby on Rails setup
 # Remove whole non-Rails setup that is above and uncomment the 4 lines below
 # ENV['RAILS_ENV'] ||= 'development'
@@ -28,9 +29,7 @@ class KarafkaApp < Karafka::App
     # config.logger = Rails.logger
   end
  
-
   after_init do |config|
-    #EventStream.run
   end
 
   Karafka.monitor.subscribe(Karafka::Instrumentation::Listener)
@@ -40,9 +39,9 @@ class KarafkaApp < Karafka::App
         consumer SectionConsumer #Single message from section_change
         end
       end
-      #topic :course_change do
-        #consumer CourseConsumer
-      #end
+      topic :course_change do
+        consumer CourseConsumer
+      end
     end
 end
 
