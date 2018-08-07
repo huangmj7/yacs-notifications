@@ -11,7 +11,7 @@ Root ||= Pathname.new(File.dirname(__FILE__)).expand_path
 require 'bundler'
 Bundler.require(:default, ENV['ENV'].to_s.to_sym)
 # Load all the code from a subfolder called 'app'
-Dir[File.join '{controllers}', '**', '*.rb'].each { |file| load File.expand_path(file) }
+Dir[File.join '{app/controllers}', '**', '*.rb'].each { |file| load File.expand_path(file) }
 # Load all the code from a subfolder called 'lib'
 Dir[File.join '{lib}', '**', '*.rb'].each { |file| load File.expand_path(file) }
 
@@ -23,7 +23,9 @@ Dir[File.join '{lib}', '**', '*.rb'].each { |file| load File.expand_path(file) }
 # require 'iodine'
 
 Iodine::DEFAULT_HTTP_ARGS[:log] = 1 if Iodine::DEFAULT_HTTP_ARGS[:log].nil?
-
+Iodine.threads = 1
+Iodine.workers = 1
+Iodine::DEFAULT_HTTP_ARGS[:port] = 4800
 # # Optional Scaling (across processes or machines):
 ENV['PL_REDIS_URL'] ||= ENV['REDIS_URL'] ||
                         ENV['REDISCLOUD_URL'] ||
@@ -36,10 +38,6 @@ ENV['PL_REDIS_URL'] ||= ENV['REDIS_URL'] ||
 # Map the views folder to the template root (for the {#render} function).
 #Plezi.templates = Root.join('views').to_s
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 3e679419c4a3072f794fa893c2c903334ba24107
 # Start Plezi
 require_relative 'routes.rb'
 

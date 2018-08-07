@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 #require 'karafka'
 # Non Ruby on Rails setup
+puts "Hi"
 ENV['RACK_ENV'] ||= 'development'
 ENV['KARAFKA_ENV'] ||= ENV['RACK_ENV']
 require 'bundler/setup'

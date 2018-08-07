@@ -12,8 +12,4 @@ RUN bundle install
 
 COPY . $INSTALL_PATH
 
-<<<<<<< HEAD
-CMD ruby notifications.rb
-=======
-CMD ruby notifications.rb
->>>>>>> 3e679419c4a3072f794fa893c2c903334ba24107
+CMD ["/bin/sh","entrypoint.sh"]

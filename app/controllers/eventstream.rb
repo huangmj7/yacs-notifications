@@ -1,4 +1,6 @@
 require 'plezi'
+require 'iodine'
+
 
 # Replace this sample with real code.
 class EventStream
@@ -12,6 +14,9 @@ class EventStream
     subscribe "notifications"
     write "hello"
     publish "notifications", "OPEN"
+    ::Iodine::subcribe channal:"notifications"do 
+      puts "hi"
+    end
   end
   
   def on_message(data) #If no incoming information, send @event
