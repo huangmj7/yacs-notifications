@@ -1,6 +1,5 @@
 require 'plezi'
 require 'iodine'
-require_relative 'app/controllers/eventstream'
 
 ## Set environment, working directory, load gems and create logs
 #ENV['ENV'] ||= ENV['RACK_ENV'] ||= ENV['RAILS_ENV'] # production ENV will render SASS as compressed.

@@ -7,7 +7,7 @@ class CourseConsumer < ApplicationConsumer
     unless params.nil?
 	    @notifications = params.to_s
       ::Iodine::publish channel: "notifications", message: "#{@notifications}"
-      puts "COurseConsumer sent message to websocket"
+      puts "CourseConsumer sent message to websocket"
     end	
   end
 end
