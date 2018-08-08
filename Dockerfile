@@ -12,8 +12,4 @@ RUN bundle install
 
 COPY . $INSTALL_PATH
 
-
-#ENV ENTRY bundle exec karafka server 
-#ENV ENTRY bundle exec iodine -p 4800 -t 1 -w 1 -www ./public 
-ENV ENTRY ruby notifications.rb -p 4800 -t 1 -w 1 -www ./public && bundle exec karafka server
-CMD $ENTRY
+CMD ["/bin/sh","entrypoint.sh"]

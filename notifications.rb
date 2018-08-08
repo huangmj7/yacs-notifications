@@ -1,5 +1,10 @@
 # encoding: UTF-8
 
+require 'plezi'
+require 'iodine'
+require_relative 'app/controllers/eventstream'
+
+
 ## Set environment, working directory, load gems and create logs
 #ENV['ENV'] ||= ENV['RACK_ENV'] ||= ENV['RAILS_ENV'] # production ENV will render SASS as compressed.
 ## Using pathname extentions for setting public folder
@@ -31,3 +36,13 @@ ENV['PL_REDIS_URL'] ||= ENV['REDIS_URL'] ||
 
 # load routes.
 load Root.join('routes.rb').to_s
+
+App = Proc.new do |env|
+       if(env['rack.upgrade?'.freeze] == :websocket)
+           env['rack.upgrade'.freeze] = EventStream.new
+           [0, {}, []]
+       else
+          [200, {"Content-Length" => "12", "Content-Type" => "text/plain"}, ["Hello World!"]]
+      end
+  
+end

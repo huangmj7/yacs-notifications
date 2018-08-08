@@ -1,0 +1,13 @@
+* Listening on port 4860
+
+Starting up Iodine:
+ * Ruby v.2.5.1
+ * Iodine v.0.6.5
+ * 1 Workers X 1 Threads per worker.
+
+Iodine HTTP Server on port 4860:
+ *    Serving static files from ./public
+
+Server is running 1 worker X 1 thread, press ^C to stop
+* Detected capacity: 131072 open file limit
+* Root pid: 5
