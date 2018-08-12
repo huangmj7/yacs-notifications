@@ -10,6 +10,7 @@ WORKDIR $INSTALL_PATH
 
 COPY Gemfile $INSTALL_PATH
 RUN bundle install
+RUN gem install bundler
 
 COPY . $INSTALL_PATH
 

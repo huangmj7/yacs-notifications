@@ -8,21 +8,24 @@ class EventStream
   end 
 
   def on_open
-    puts "WS connection open"
-    ::Iodine::subscribe channel:"notifications" do
-      puts "I'm in!"
-    end
+    subscribe channel: "notifications"
+    publish channel:"notifications",message:"WS connection open"
+    ::Iodine.subscribe(channel:"notifications")  {|ch,msg| publish(channel:"notifications",message:"#{msg}",)} #This method can recevie message from Iodine but not what we want, may related to PID.
+    #::Iodine.subscribe(channel:"notifications")  do 
+      #publish channel:"notifications",message:"In coming"
+    #end #Bryan's version
   end
   
   #TODO
   def on_message data
-    #::Iodine::write "#{@data}"
-    #puts data
+    publish channel:"notifications",message:"Message from forntend: #{data}"
   end 
 
   def on_close
-    ::Iodine::unsubscribe("notifications")
+    publish channel:"notifications",message:"WS connection close"
+    #::Iodine::unsubscribe channel:"notifications" #TypeError: expect Fixnums
+
   end 
 end
 #test location: ws://localhost:3000/notifications/
-
+# ws://localhost:4860
