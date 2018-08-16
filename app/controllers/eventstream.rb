@@ -8,9 +8,9 @@ class EventStream
   end 
 
   def on_open
-    subscribe channel: "notifications"
-    publish channel:"notifications",message:"WS connection open"
-    ::Iodine.subscribe(channel:"notifications")  {|ch,msg| publish(channel:"notifications",message:"#{msg}",)} #This method can recevie message from Iodine but not what we want, may related to PID.
+    subscribe channel: "WS"
+    publish channel:"WS",message:"WS connection open"
+    ::Iodine.subscribe(channel:"notifications")  {|ch,msg| publish channel:"WS",message:"#{ch}:: #{msg} \n"} #This method can recevie message from Iodine but not what we want, may related to PID.
     #::Iodine.subscribe(channel:"notifications")  do 
       #publish channel:"notifications",message:"In coming"
     #end #Bryan's version
@@ -18,7 +18,8 @@ class EventStream
   
   #TODO
   def on_message data
-    publish channel:"notifications",message:"Message from forntend: #{data}"
+    Iodine::publish channel:"notifications",message:"Message from forntend: #{data}"
+    #publish channel:"WS",message:"Message from forntend: #{data}"
   end 
 
   def on_close

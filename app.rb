@@ -36,7 +36,7 @@ ENV['PL_REDIS_URL'] ||= ENV['REDIS_URL'] ||
 # Plezi.app_name = 'yacs_websocket_a027e2d668a7dc21c59fe56f018432ea'
 
 # Map the views folder to the template root (for the {#render} function).
-#Plezi.templates = Root.join('views').to_s
+Plezi.templates = Root.join('views').to_s
 
 # load routes.
 load Root.join('routes.rb').to_s

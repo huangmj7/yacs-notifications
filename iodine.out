@@ -11,4 +11,5 @@ Starting up Iodine HTTP Server on port 4800:
 
 * 5 is running.
 * 9 is running.
-172.18.0.1 - - [Sun, 11 Aug 2018 20:55:59 GMT] "GET / HTTP/1.1" 101 -- 16ms
+172.18.0.1 - - [Wed, 14 Aug 2018 19:39:03 GMT] "GET / HTTP/1.1" 200 6022 40ms
+172.18.0.1 - - [Wed, 14 Aug 2018 19:39:04 GMT] "GET / HTTP/1.1" 101 -- 0ms
